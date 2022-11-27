@@ -1,10 +1,13 @@
 package com.mathopia.elbmpe.Entity;
 
+
+import java.util.Set;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
 
 @Entity
 @Table(name="tbl_topic")
@@ -17,6 +20,8 @@ public class TopicEntity {
 	private String title;
 	private String learningG;
 	private String vidSource;
+	
+	
 	
 	public TopicEntity() {}
 	public TopicEntity(int topicID, String title, String learningG, String vidSource) {
@@ -59,6 +64,8 @@ public class TopicEntity {
 		this.vidSource = vidSource;
 	}
 	
+	
+
 	
 	
 
