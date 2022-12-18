@@ -43,6 +43,14 @@ public class GameService {
             return null;
         
     }
+    // Search by gameID
+    public GameEntity findByGameID(int gameID) {
+        if (grepo.findByGameID(gameID) != null)
+            return grepo.findByGameID(gameID);
+        else
+            return null;
+        
+    }
     
     // Update GameDetails
     public GameEntity putGame(int gameID, GameEntity newGameDetails) throws Exception{

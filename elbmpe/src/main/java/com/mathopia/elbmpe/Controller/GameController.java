@@ -7,6 +7,7 @@ import java.util.List;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,6 +27,8 @@ import com.mathopia.elbmpe.Service.GameService;
 
 @RestController
 @RequestMapping("/game")
+@CrossOrigin(origins = "http://localhost:3000")
+
 public class GameController {
     
     @Autowired
@@ -44,13 +47,19 @@ public class GameController {
     }
     
     //Read GameTitle
-    @GetMapping("/getByGameTitle")
+    @GetMapping("/getByGameTitle/{gameTitle}")
     public GameEntity findByGameTitle(@RequestParam String gameTitle) {
         return gserv.findByGameTitle(gameTitle);
+    }
+    @GetMapping("/getByGameID/{gameID}")
+    public GameEntity findByGameID(@PathVariable int gameID) {
+        return gserv.findByGameID(gameID);
+  
     }
     
     //Update Record
     @PutMapping("/putGame")
+
     public GameEntity putGame(@RequestParam int gameID,@RequestBody GameEntity newGameDetails) throws Exception{
         return gserv.putGame(gameID, newGameDetails);
     }

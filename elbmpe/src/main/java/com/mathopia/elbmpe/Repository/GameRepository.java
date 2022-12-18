@@ -8,5 +8,6 @@ import com.mathopia.elbmpe.Entity.GameEntity;
 @Repository
 public interface GameRepository extends JpaRepository<GameEntity, Integer> {
 	GameEntity findByGameTitle(String gameTitle);
+	GameEntity findByGameID(int gameID);
 }
 
