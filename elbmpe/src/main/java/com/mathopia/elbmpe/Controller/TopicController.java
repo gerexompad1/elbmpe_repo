@@ -18,8 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-
-
+import com.mathopia.elbmpe.Entity.GameEntity;
 import com.mathopia.elbmpe.Entity.TopicEntity;
 import com.mathopia.elbmpe.Service.TopicService;
 
@@ -51,6 +50,13 @@ public class TopicController {
         return tpserv.findByTitle(title);
     }
     
+    //Read Topic ID
+    @GetMapping("/getByTopicID/{topicID}")
+    public TopicEntity findByTopicID(@PathVariable int topicID) {
+        return tpserv.findByTopicID(topicID);
+  
+    }
+    
     //Update Record
     @PutMapping("/putTopic")
     public TopicEntity putTopic(@RequestParam int id,@RequestBody TopicEntity newTopicDetails) throws Exception{
@@ -58,8 +64,8 @@ public class TopicController {
     }
     
     //Delete Record
-    @DeleteMapping("/deleteTopic/{id}")
-    public String deleteTopic(@PathVariable int id) {
-        return tpserv.deleteTopic(id);
+    @DeleteMapping("/deleteTopic/{topicID}")
+    public String deleteTopic(@PathVariable int topicID) {
+        return tpserv.deleteTopic(topicID);
     }
 }

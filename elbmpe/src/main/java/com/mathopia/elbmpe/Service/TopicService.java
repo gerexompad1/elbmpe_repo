@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.NoSuchElementException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.mathopia.elbmpe.Entity.TopicEntity;
 import com.mathopia.elbmpe.Entity.TopicEntity;
 import com.mathopia.elbmpe.Repository.TopicRepository;
 
@@ -36,6 +38,15 @@ public class TopicService {
         
     }
     
+    // Search by topicID
+    public TopicEntity findByTopicID(int topicID) {
+        if (trepo.findByTopicID(topicID) != null)
+            return trepo.findByTopicID(topicID);
+        else
+            return null;
+        
+    }
+    
     // Update Topic
     public TopicEntity putTopic(int id, TopicEntity newTopicDetails) throws Exception{
         TopicEntity topic = new TopicEntity();
@@ -57,16 +68,16 @@ public class TopicService {
     }
     
     //Delete Record
-    public String deleteTopic(int id) {
+    public String deleteTopic(int topicID) {
         String msg;
         
-        if (trepo.findById(id) !=null) { // Find the record
-            trepo.deleteById(id);        // Delete the Record
+        if (trepo.findById(topicID) !=null) { // Find the record
+            trepo.deleteById(topicID);        // Delete the Record
             
-            msg = "Topic ID Number " + id + " Is Successfully Deleted!";
+            msg = "Topic ID Number " + topicID + " Is Successfully Deleted!";
         }
         else
-            msg = "Topic ID Number " + id + " Is Not Found!";
+            msg = "Topic ID Number " + topicID + " Is Not Found!";
         
         return msg;
     }
